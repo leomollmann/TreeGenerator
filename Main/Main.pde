@@ -17,19 +17,6 @@ void setup() {
   cam = new PeasyCam(this, 100);
   cam.setMinimumDistance(50);
   cam.setMaximumDistance(500);
-  float r = 12;
-  float h = 0;
-  int s = 40;
-  for(int i = 0; i < 100; i++){
-    rings.add(new Ring(r,h,s,0,0));
-    r-=0.1;
-    h+=2;
-  }
-  tree.add(new Base(rings.get(0)));
-  for(int i = 1; i < rings.size()-1; i++){
-    tree.add(new Trunk(rings.get(i),rings.get(i+1)));
-  }
-  new TrigonometricConstants();
 }
 
 void draw(){
