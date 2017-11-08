@@ -4,10 +4,9 @@ PeasyCam cam;
 
 float verticalConsistance = 0.001;
 float deformation = 4;
-
-float x = 0;
-float y = 0;
 public static final float woodDensity = 400;
+
+public TrigonometricConstants c = new TrigonometricConstants();
 ArrayList<Ring> rings = new ArrayList<Ring>();
 ArrayList<TreeComponents> tree = new ArrayList<TreeComponents>();
 

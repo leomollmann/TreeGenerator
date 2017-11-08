@@ -1,6 +1,11 @@
 class TrigonometricConstants{
+  /*
+    Object jobs:
+      * Calculate all sines and cosines in regular polygons from ringStep * (1 to ringMax);
+      * Calculate all sines and cosines in angles from rotStep * (1 to rotMax);
+  */
   
-  private final int ringMax = 14, rotMax = 15, precision = 10000000;
+  private final int ringMax = 14, rotMax = 15, ringStep = 3, precision = 10000000;
   private final float rotStep = 0.2;
   
   private ArrayList<float[]> ringSine = new ArrayList<float[]>();
@@ -24,7 +29,7 @@ class TrigonometricConstants{
       }
     }
     
-    for(int i = 1; i <= rotMax; i++){
+    for(int i = 1; i < rotMax; i++){
       rotSine[i] = round(sin(i * rotStep) * precision);
       rotCosine[i] = round(cos(i * rotStep) * precision);
       rotSine[i] /= precision;
@@ -32,8 +37,15 @@ class TrigonometricConstants{
     }
   }
   
-  public float[] getRingSin(int sides){return ringSine.get(sides/3);}
-  public float[] getRingCos(int sides){return ringCosine.get(sides/3);}
-  public float getRotSin(int angle){return rotSine[angle];}
-  public float getRotCos(int angle){return rotSine[angle];}
+  public int getRingIndex(int sides){
+    return sides/3;
+  }
+  public int getRotIndex(float angle){
+    return (int)(angle / rotStep);
+  }
+  
+  public float[] getRingSin(int index){return ringSine.get(index);}
+  public float[] getRingCos(int index){return ringCosine.get(index);}
+  public float getRotSin(int index){return rotSine[index];}
+  public float getRotCos(int index){return rotSine[index];}
 }
